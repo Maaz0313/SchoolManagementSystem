@@ -75,7 +75,7 @@
                             @Html.DropDownListFor(model => model.Country, Model.ListOfCountry, new { @class = "form-control" })
                         </div>
                         <div class="col-xs-6">
-                            @Html.DropDownListFor(model => model.City, new List<SelectListItem>(), new { @class = "form-control" })
+                            @Html.DropDownListFor(model => model.City, Model.ListOfCity, new { @class = "form-control" })
                         </div>
                     </div>
                     @Html.HiddenFor(model => model.EmployeeEducationID, new { @class = "form-control" })

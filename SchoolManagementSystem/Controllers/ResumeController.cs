@@ -196,11 +196,17 @@ namespace SchoolManagementSystem.Controllers
             education.ListOfCountry = GetCountries();
 
             // Call the GetCities action method and retrieve the JSON data
-            var citiesJsonResult = GetCities(education.Country);
+            //var citiesJsonResult = GetCities(education.Country);
 
             // Extract the data property from the JSON result and convert it to List<SelectListItem>
-            var citiesData = citiesJsonResult.Data as List<SelectListItem>;
-            education.ListOfCity = citiesData;
+            //var citiesData = citiesJsonResult.Data as List<SelectListItem>;
+            //education.ListOfCity = citiesData;
+
+            education.ListOfCity = new List<SelectListItem>();
+            education.ListOfCity.Add(new SelectListItem(){ Text = "KPK",  Value = "KPK", Selected = true });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Punjab", Value = "Punjab" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Sindh", Value = "Sindh" });
+            education.ListOfCity.Add(new SelectListItem() { Text = "Balochistan", Value= "Balochistan" });
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }
 
