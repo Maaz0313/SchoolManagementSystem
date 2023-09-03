@@ -161,8 +161,6 @@ namespace SchoolManagementSystem.Controllers
         {
             try
             {
-
-
                 string msg = string.Empty;
 
                 if (education != null)
