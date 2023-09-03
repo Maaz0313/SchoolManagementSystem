@@ -59,7 +59,7 @@ namespace SchoolManagementSystem.Repository
         {
             string msg = string.Empty;
 
-            EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeID == EmployeeResumeID).FirstOrDefault();
+            EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeResumeID == EmployeeResumeID).FirstOrDefault();
 
             if (personEntity != null)
             {

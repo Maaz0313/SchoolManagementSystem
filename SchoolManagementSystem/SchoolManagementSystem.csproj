@@ -151,8 +151,6 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Repository\desktop.ini" />
-    <Content Include="Models\desktop.ini" />
     <Content Include="FileHelper\desktop.ini" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
