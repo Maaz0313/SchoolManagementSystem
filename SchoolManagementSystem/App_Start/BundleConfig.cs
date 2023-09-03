@@ -9,13 +9,7 @@ namespace SchoolManagementSystem
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Content/Home/js/jquery.min.js",
-                        "~/Content/Home/js/jquery-migrate-3.0.1.min.js",
-                        "~/Content/Home/js/jquery.animateNumber.min.js",
-                        "~/Content/Home/js/jquery.easing.1.3.js",
-                        "~/Content/Home/js/jquery.magnific-popup.min.js",
-                        "~/Content/Home/js/jquery.stellar.min.js",
-                        "~/Content/Home/js/jquery.waypoints.min.js"));
+                        "~/Scripts/jquery.*"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
