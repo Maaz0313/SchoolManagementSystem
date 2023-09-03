@@ -27,13 +27,14 @@
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="https://trentrichardson.com/examples/timepicker/jquery-ui-timepicker-addon.js"></script>
     @RenderSection("scripts", required: false)
 
     <script type="text/javascript">
         $(function () {
-                $('#datetimepicker1').datetimepicker();
-                $('#datetimepicker2').datetimepicker();
-            });
+            $('#datetimepicker1').datetimepicker();
+            $('#datetimepicker2').datetimepicker();
+        });
     </script>
 
 </body>
