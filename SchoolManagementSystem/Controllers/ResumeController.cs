@@ -202,12 +202,6 @@ namespace SchoolManagementSystem.Controllers
                 new SelectListItem() { Text = "Sindh", Value = "Sindh" },
                 new SelectListItem() { Text = "Balochistan", Value = "Balochistan" }
             };
-            //// Call the GetCities action method and retrieve the JSON data
-            //var citiesJsonResult = GetCities(education.Country);
-
-            //// Extract the data property from the JSON result and convert it to List<SelectListItem>
-            //var citiesData = citiesJsonResult.Data as List<SelectListItem>;
-            //education.ListOfCity = citiesData;
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }
 
