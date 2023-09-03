@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using DatabaseAccess;
+using Newtonsoft.Json.Linq;
 using SchoolManagementSystem.Models;
 using SchoolManagementSystem.Repository;
 using SchoolManagementSystem.ViewModels;
@@ -194,13 +195,19 @@ namespace SchoolManagementSystem.Controllers
         public PartialViewResult EducationPartial(EmployeeEducationTableVM education)
         {
             education.ListOfCountry = GetCountries();
+            education.ListOfCity = new List<SelectListItem>
+            {
+                new SelectListItem() { Text = "KPK", Value = "KPK", Selected = true },
+                new SelectListItem() { Text = "Punjab", Value = "Punjab" },
+                new SelectListItem() { Text = "Sindh", Value = "Sindh" },
+                new SelectListItem() { Text = "Balochistan", Value = "Balochistan" }
+            };
+            //// Call the GetCities action method and retrieve the JSON data
+            //var citiesJsonResult = GetCities(education.Country);
 
-            // Call the GetCities action method and retrieve the JSON data
-            var citiesJsonResult = GetCities(education.Country);
-
-            // Extract the data property from the JSON result and convert it to List<SelectListItem>
-            var citiesData = citiesJsonResult.Data as List<SelectListItem>;
-            education.ListOfCity = citiesData;
+            //// Extract the data property from the JSON result and convert it to List<SelectListItem>
+            //var citiesData = citiesJsonResult.Data as List<SelectListItem>;
+            //education.ListOfCity = citiesData;
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }
 
