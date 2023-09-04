@@ -236,7 +236,7 @@ namespace SchoolManagementSystem.Controllers
                 int userid = 0;
                 int.TryParse(Convert.ToString(Session["UserID"]), out userid);
                 workExperience.UserID = userid;
-
+                workExperience.EmployeeResumeID = EmployeeResumeID;
                 msg = _resumeRepository.AddOrUpdateExperience(workExperienceEntity, EmployeeResumeID);
 
             }

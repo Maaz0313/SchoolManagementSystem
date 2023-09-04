@@ -285,7 +285,18 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            <li class="nav-item">
+                <a href="javascript:;" class="">
+                    <i class="icon_desktop"></i>
+                    <span>My Resume</span>
+                    <span class="menu-arrow arrow_carrot-right"></span>
+                </a>
+                <ul class="sub">
+                    <li>@Html.ActionLink("Education", "Education", "Resume", null, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Experience", "workExperience", "Resume", null, new { @class = "" })</li>
+                    <li>@Html.ActionLink("Skills", "SkiCerfLang", "Resume", null, new { @class = "" })</li>
+                </ul>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
