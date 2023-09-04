@@ -154,6 +154,10 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult OnlyEducation(int? id)
         {
             Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            if (Session["EmployeeResumeID"] == null)
+            {
+                return RedirectToAction("PersonnalInformtion");
+            }
             return RedirectToAction("Education");
         }
 
@@ -216,6 +220,10 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult OnlyWorkExperience(int? id)
         {
             Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            if (Session["EmployeeResumeID"] == null)
+            {
+                return RedirectToAction("PersonnalInformtion");
+            }
             return RedirectToAction("WorkExperience");
         }
 
@@ -263,6 +271,10 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult OnlySkiCerfLang(int? id)
         {
             Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            if (Session["EmployeeResumeID"] == null)
+            {
+                return RedirectToAction("PersonnalInformtion");
+            }
             return RedirectToAction("SkiCerfLang");
         }
 
@@ -383,6 +395,7 @@ namespace SchoolManagementSystem.Controllers
         {
             using (SchoolMgtDbEntities db = new SchoolMgtDbEntities())
             {
+                EmployeeID = Convert.ToInt32(Session["EmployeeID"]);
                 var person = db.EmployeeResumeTables.Where(p => p.EmployeeID == EmployeeID).FirstOrDefault();
                 Session["EmployeeResumeID"] = person.EmployeeResumeID;
                 return View();

@@ -367,6 +367,7 @@
     <Content Include="Views\UserTypeTables\Details.cshtml" />
     <Content Include="Views\UserTypeTables\Edit.cshtml" />
     <Content Include="Views\UserTypeTables\Index.cshtml" />
+    <Content Include="Views\Resume\CV.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
