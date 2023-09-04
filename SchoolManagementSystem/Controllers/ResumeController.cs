@@ -151,6 +151,12 @@ namespace SchoolManagementSystem.Controllers
 
         }
 
+        public ActionResult OnlyEducation(int? id)
+        {
+            Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            return RedirectToAction("Education");
+        }
+
         [HttpGet]
         public ActionResult Education(EmployeeEducationTableVM education)
         {
@@ -207,6 +213,12 @@ namespace SchoolManagementSystem.Controllers
             return PartialView("~/Views/Shared/_MyEducation.cshtml", education);
         }
 
+        public ActionResult OnlyWorkExperience(int? id)
+        {
+            Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            return RedirectToAction("WorkExperience");
+        }
+
         [HttpGet]
         public ActionResult WorkExperience()
         {
@@ -246,6 +258,12 @@ namespace SchoolManagementSystem.Controllers
             }
 
             return Json(new { data = msg }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult OnlySkiCerfLang(int? id)
+        {
+            Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson((int)id);
+            return RedirectToAction("SkiCerfLang");
         }
 
         [HttpGet]
