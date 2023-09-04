@@ -23,7 +23,7 @@ namespace SchoolManagementSystem.Repository
             try
             {
                 int countRecords = 0;
-                EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeID == EmployeeResumeID).FirstOrDefault();
+                EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeResumeID == EmployeeResumeID).FirstOrDefault();
 
                 if (personEntity != null && certification != null)
                 {
@@ -44,7 +44,7 @@ namespace SchoolManagementSystem.Repository
         public bool AddLanguage(EmployeeLanguageTable language, int EmployeeResumeID)
         {
             int countRecords = 0;
-            EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeID == EmployeeResumeID).FirstOrDefault();
+            EmployeeResumeTable personEntity = _dbContext.EmployeeResumeTables.Where(emp => emp.EmployeeResumeID == EmployeeResumeID).FirstOrDefault();
 
             if (personEntity != null && language != null)
             {
