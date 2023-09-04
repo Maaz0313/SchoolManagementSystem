@@ -84,7 +84,7 @@ namespace SchoolManagementSystem.Controllers
             //Educational Level
             List<SelectListItem> educationalLevel = new List<SelectListItem>()
             {
-                new SelectListItem { Text = "Hight School", Value = "Hight School", Selected = true},
+                new SelectListItem { Text = "High School", Value = "High School", Selected = true},
                 new SelectListItem { Text = "Diploma", Value = "Diploma"},
                 new SelectListItem { Text = "Bachelor's degree", Value = "Bachelor's degree"},
                 new SelectListItem { Text = "Master's degree", Value = "Master's degree"},
@@ -120,7 +120,7 @@ namespace SchoolManagementSystem.Controllers
                     new SelectListItem { Text = "Diploma", Value = "Diploma"},
                     new SelectListItem { Text = "Bachelor's degree", Value = "Bachelor's degree"},
                     new SelectListItem { Text = "Master's degree", Value = "Master's degree"},
-                    new SelectListItem { Text = "Doctorate", Value = "Doctorate"},
+                    new SelectListItem { Text = "Doctorate", Value = "Doctorate"}
                 };
                 //Creating Mapping
                 Mapper.Initialize(cfg => cfg.CreateMap<EmployeeResumeTableVM, EmployeeResumeTable>());
