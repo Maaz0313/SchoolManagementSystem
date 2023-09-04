@@ -366,7 +366,7 @@ namespace SchoolManagementSystem.Controllers
             EmployeeLanguageTable languageEntity = Mapper.Map<EmployeeLanguageTable>(language);
             int userid = 0;
             int.TryParse(Convert.ToString(Session["UserID"]), out userid);
-            language.UserID = userid;
+            languageEntity.UserID = userid;
             if (_resumeRepository.AddLanguage(languageEntity, EmployeeResumeID))
             {
                 msg = "Language added successfully";
