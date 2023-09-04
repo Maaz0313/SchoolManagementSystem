@@ -329,12 +329,6 @@
     <Content Include="Views\StudentPromotTables\Details.cshtml" />
     <Content Include="Views\StudentPromotTables\Edit.cshtml" />
     <Content Include="Views\StudentPromotTables\Index.cshtml" />
-    <Content Include="Views\StudentTables\Create.cshtml" />
-    <Content Include="Views\StudentTables\Delete.cshtml" />
-    <Content Include="Views\StudentTables\desktop.ini" />
-    <Content Include="Views\StudentTables\Details.cshtml" />
-    <Content Include="Views\StudentTables\Edit.cshtml" />
-    <Content Include="Views\StudentTables\Index.cshtml" />
     <Content Include="Views\SubjectTables\Create.cshtml" />
     <Content Include="Views\SubjectTables\Delete.cshtml" />
     <Content Include="Views\SubjectTables\desktop.ini" />
@@ -366,6 +360,11 @@
     <Content Include="Views\UserTypeTables\Edit.cshtml" />
     <Content Include="Views\UserTypeTables\Index.cshtml" />
     <Content Include="Views\Resume\CV.cshtml" />
+    <Content Include="Views\StudentTables\Create.cshtml" />
+    <Content Include="Views\StudentTables\Delete.cshtml" />
+    <Content Include="Views\StudentTables\Details.cshtml" />
+    <Content Include="Views\StudentTables\Edit.cshtml" />
+    <Content Include="Views\StudentTables\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

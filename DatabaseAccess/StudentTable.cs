@@ -27,6 +27,7 @@ namespace DatabaseAccess
         public int StudentID { get; set; }
         public int SessionID { get; set; }
         public int ProgrameID { get; set; }
+        public int ClassID { get; set; }
         public int UserID { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
@@ -51,6 +52,7 @@ namespace DatabaseAccess
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendanceTable> AttendanceTables { get; set; }
+        public virtual ClassTable ClassTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExamMarksTable> ExamMarksTables { get; set; }
         public virtual ProgrameTable ProgrameTable { get; set; }

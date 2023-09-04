@@ -19,8 +19,8 @@ namespace DatabaseAccess
         {
             this.AnnualTables = new HashSet<AnnualTable>();
             this.ProgrameSessionTables = new HashSet<ProgrameSessionTable>();
-            this.StudentTables = new HashSet<StudentTable>();
             this.SubmissionFeeTables = new HashSet<SubmissionFeeTable>();
+            this.StudentTables = new HashSet<StudentTable>();
         }
     
         public int ProgrameID { get; set; }
@@ -35,8 +35,8 @@ namespace DatabaseAccess
         public virtual ICollection<ProgrameSessionTable> ProgrameSessionTables { get; set; }
         public virtual UserTable UserTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<StudentTable> StudentTables { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubmissionFeeTable> SubmissionFeeTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<StudentTable> StudentTables { get; set; }
     }
 }

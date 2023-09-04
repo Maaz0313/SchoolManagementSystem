@@ -11,14 +11,17 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Web;
-
+    
     public partial class StaffTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        
+        public StaffTable()
+        {
+            this.EmployeeLeavingTables = new HashSet<EmployeeLeavingTable>();
+            this.EmployeeSalaryTables = new HashSet<EmployeeSalaryTable>();
+            this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
+            this.TimeTblTables = new HashSet<TimeTblTable>();
+        }
     
         public int StaffID { get; set; }
         public int UserID { get; set; }
@@ -41,17 +44,7 @@ namespace DatabaseAccess
         public Nullable<bool> CriminalRecordIfAny { get; set; }
         public string CriminalRecordDetails { get; set; }
         public System.DateTime RegistrationDate { get; set; }
-        [NotMapped]
-        [Required(ErrorMessage = "{0} is required field!")]
-        public HttpPostedFileBase PhotoFile { get; set; }
-        public StaffTable()
-        {
-            this.EmployeeLeavingTables = new HashSet<EmployeeLeavingTable>();
-            this.EmployeeSalaryTables = new HashSet<EmployeeSalaryTable>();
-            this.StaffAttendanceTables = new HashSet<StaffAttendanceTable>();
-            this.TimeTblTables = new HashSet<TimeTblTable>();
-            RegistrationDate = System.DateTime.Now;
-        }
+    
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }
