@@ -85,9 +85,9 @@
                                 @Html.ActionLink("Edit", "Edit", new { id = item.StaffID }, new { @class = "btn btn-primary" })
                                 @Html.ActionLink("Details", "Details", new { id = item.StaffID }, new { @class = "btn btn-info" })
                                 @Html.ActionLink("Delete", "Delete", new { id = item.StaffID }, new { @class = "btn btn-danger" })
-                                @Html.ActionLink("Education", "Education", "Resume", new { id = item.StaffID }, new { @class = "" })
-                                @Html.ActionLink("Experience", "workExperience", "Resume", new { id = item.StaffID }, new { @class = "" })
-                                @Html.ActionLink("Skills", "SkiCerfLang", "Resume", new { id = item.StaffID }, new { @class = "" })
+                                @Html.ActionLink("Education", "OnlyEducation", "Resume", new { id = item.StaffID }, new { @class = "" })
+                                @Html.ActionLink("Experience", "OnlyworkExperience", "Resume", new { id = item.StaffID }, new { @class = "" })
+                                @Html.ActionLink("Skills", "OnlySkiCerfLang", "Resume", new { id = item.StaffID }, new { @class = "" })
                             </td>
                         </tr>
                     }
