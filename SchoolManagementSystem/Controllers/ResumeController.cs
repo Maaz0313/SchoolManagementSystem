@@ -103,6 +103,8 @@ namespace SchoolManagementSystem.Controllers
         {
             var employeeid = 0;
             int.TryParse(Convert.ToString(Session["EmployeeID"]), out employeeid);
+            int userid = 0;
+            int.TryParse(Convert.ToString(Session["UserID"]), out userid);
             person.EmployeeID = employeeid;
             if (ModelState.IsValid)
             {
@@ -169,7 +171,9 @@ namespace SchoolManagementSystem.Controllers
                     Mapper.Reset();
                     Mapper.Initialize(cfg => cfg.CreateMap<EmployeeEducationTableVM, EmployeeEducationTable>());
                     EmployeeEducationTable educationEntity = Mapper.Map<EmployeeEducationTable>(education);
-
+                    int userid = 0;
+                    int.TryParse(Convert.ToString(Session["UserID"]), out userid);
+                    educationEntity.UserID = userid;
                     int EmployeeResumeID = (int)Session["EmployeeResumeID"];
 
                     msg = _resumeRepository.AddOrUpdateEducation(educationEntity, EmployeeResumeID);
@@ -229,7 +233,9 @@ namespace SchoolManagementSystem.Controllers
                 EmployeeWorkExperienceTable workExperienceEntity = Mapper.Map<EmployeeWorkExperienceTable>(workExperience);
 
                 int EmployeeResumeID = (int)Session["EmployeeResumeID"];
-
+                int userid = 0;
+                int.TryParse(Convert.ToString(Session["UserID"]), out userid);
+                workExperience.UserID = userid;
 
                 msg = _resumeRepository.AddOrUpdateExperience(workExperienceEntity, EmployeeResumeID);
 
@@ -262,7 +268,9 @@ namespace SchoolManagementSystem.Controllers
             Mapper.Reset();
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeSkillsVM, EmployeeSkillTable>());
             EmployeeSkillTable skillEntity = Mapper.Map<EmployeeSkillTable>(skill);
-
+            int userid = 0;
+            int.TryParse(Convert.ToString(Session["UserID"]), out userid);
+            skillEntity.UserID = userid;
             if (_resumeRepository.AddSkill(skillEntity, EmployeeResumeID))
             {
                 msg = "skill added successfully";
@@ -298,7 +306,9 @@ namespace SchoolManagementSystem.Controllers
             Mapper.Reset();
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeCertificationVM, EmployeeCertificationTable>());
             EmployeeCertificationTable certificationEntity = Mapper.Map<EmployeeCertificationTable>(certification);
-
+            int userid = 0;
+            int.TryParse(Convert.ToString(Session["UserID"]), out userid);
+            certificationEntity.UserID = userid;
             if (_resumeRepository.AddCertification(certificationEntity, EmployeeResumeID))
             {
                 msg = "Certification added successfully";
@@ -336,7 +346,9 @@ namespace SchoolManagementSystem.Controllers
             Mapper.Reset();
             Mapper.Initialize(cfg => cfg.CreateMap<EmployeeLanguageVM, EmployeeLanguageTable>());
             EmployeeLanguageTable languageEntity = Mapper.Map<EmployeeLanguageTable>(language);
-
+            int userid = 0;
+            int.TryParse(Convert.ToString(Session["UserID"]), out userid);
+            language.UserID = userid;
             if (_resumeRepository.AddLanguage(languageEntity, EmployeeResumeID))
             {
                 msg = "Language added successfully";
