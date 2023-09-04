@@ -167,7 +167,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
-    <Content Include="ViewModels\desktop.ini" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
@@ -302,7 +301,6 @@
     <Content Include="Views\ProgrameTables\Details.cshtml" />
     <Content Include="Views\ProgrameTables\Edit.cshtml" />
     <Content Include="Views\ProgrameTables\Index.cshtml" />
-    <Content Include="Views\Resume\desktop.ini" />
     <Content Include="Views\Resume\Education.cshtml" />
     <Content Include="Views\Resume\PersonnalInformtion.cshtml" />
     <Content Include="Views\Resume\SkiCerfLang.cshtml" />

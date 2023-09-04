@@ -45,6 +45,7 @@ namespace SchoolManagementSystem.Controllers
                 {
                     if (people.Count() > 0)
                     {
+                        Session["EmployeeResumeID"] = _resumeRepository.GetIdPerson(employeeid);
                         return RedirectToAction("CV", new { id = employeeid });
                     }
                     else
