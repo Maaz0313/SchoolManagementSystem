@@ -6,7 +6,6 @@ using System.Web;
 using System.Web.Mvc;
 using Unity.AspNet.Mvc;
 using Unity;
-
 namespace SchoolManagementSystem.App_Start
 {
     public class Bootstrapper
