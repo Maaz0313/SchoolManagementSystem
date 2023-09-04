@@ -11,7 +11,7 @@ namespace SchoolManagementSystem
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.4.1.js",
                         "~/Scripts/jquery-3.4.1.slim.js",
-                        "~/Scripts/jquery-3.4.1.intellisense.js",
+                        //"~/Scripts/jquery-3.4.1.intellisense.js",
                         "~/Scripts/jquery-ui-timepicker-addon.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
