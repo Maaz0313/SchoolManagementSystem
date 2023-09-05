@@ -141,7 +141,6 @@ namespace SchoolManagementSystem.Controllers
                 }
                 db.Entry(staffTable).State = EntityState.Modified;
                 db.SaveChanges();
-                
                 return RedirectToAction("Index");
             }
             else

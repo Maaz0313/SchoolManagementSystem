@@ -1,7 +1,7 @@
 ﻿@model DatabaseAccess.StudentTable
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Student Registration";
 }
 
 <h2>Details</h2>
@@ -71,7 +71,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Photo)
+            @{string imagepath = Model.Photo; <img src="@Url.Content(imagepath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" /> }
         </dd>
 
         <dt>

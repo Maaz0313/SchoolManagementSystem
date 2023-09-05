@@ -79,6 +79,19 @@ namespace SchoolManagementSystem.Controllers
             {
                 db.StudentTables.Add(studentTable);
                 db.SaveChanges();
+                if (studentTable.PhotoFile != null)
+                {
+                    var folder = "/Content/StudentPhotos";
+                    var file = string.Format("{0}.png", studentTable.StudentID);
+                    var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
+                    if (response)
+                    {
+                        var pic = string.Format("{0}/{1}", folder, file);
+                        studentTable.Photo = pic;
+                        db.Entry(studentTable).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
                 return RedirectToAction("Index");
             }
 
@@ -127,6 +140,17 @@ namespace SchoolManagementSystem.Controllers
             studentTable.UserID = userid;
             if (ModelState.IsValid)
             {
+                if (studentTable.PhotoFile != null)
+                {
+                    var folder = "/Content/StudentPhotos";
+                    var file = string.Format("{0}.png", studentTable.StudentID);
+                    var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
+                    if (response)
+                    {
+                        var pic = string.Format("{0}/{1}", folder, file);
+                        studentTable.Photo = pic;
+                    }
+                }
                 db.Entry(studentTable).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

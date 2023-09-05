@@ -1,12 +1,12 @@
 ﻿@model DatabaseAccess.StaffTable
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Staff";
 }
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">New Employee</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Edit Employee</h6>
     </div>
     <div class="card-body">
         @using (Html.BeginForm("Edit", "StaffTables", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -104,7 +104,7 @@
                             @Html.LabelFor(model => model.PhotoFile, "Photo (.png only)", htmlAttributes: new { @class = "control-label" })
 
                             <span class="btn btn-default btn-file"> @Html.TextBoxFor(model => model.PhotoFile, new { type = "file" }) </span>
-                            @*@Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })*@
+                            @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
