@@ -90,3 +90,38 @@
         </div>
     </div>
 }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#StudentID').change(function () {
+            $('#ClassID').html('');
+            $.ajax({
+                    url: '@Url.Action("GetPromotC1sList", "StudentPromotTables")',
+                    type: 'GET',
+                    data: { sid, $(this).val() },
+                    dataType: 'json',
+                    success: function (response) {
+                        for (var i = 0; i < response.data.length; i++)
+                        {
+                            $('#ClassID').append("<option value=" + response.data[i].ClassID + ">" + response.data[i].Name + "</option>");
+                        }
+                    },
+                    error: function () {
+                    }
+            });
+        });
+        $('#ProgrameSessionID').change(function () {
+            $.ajax({
+                url: '@Url.Action("GetAnnulFee", "StudentPromotTables")',
+                type: 'GET',
+                dataType: 'json',
+                data: { sid: $(this).val() },
+                success: function (response) {
+                    $('#AnnualFee').val(response.fees);
+                },
+                error: function () {
+                }
+            });
+        });
+    });
+</script>
