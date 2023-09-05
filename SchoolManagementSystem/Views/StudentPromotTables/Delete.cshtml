@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.AnnualFee)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnnualFee)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.IsActive)
         </dt>
 
@@ -52,6 +60,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.SectionTable.SectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SectionTable.SectionName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.StudentTable.Name)
         </dt>
 
@@ -65,8 +81,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
         </div>
     }
 </div>

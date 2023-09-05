@@ -81,8 +81,9 @@
                 </a>
                 <div id="collapseStudent" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">General Reports:</h6>
-                        @Html.ActionLink("Students", "Index", "StudentTables", null, new { @class = "collapse-item" })
+                        <h6 class="collapse-header">Student Registration:</h6>
+                        @Html.ActionLink("New Student", "Create", "StudentTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Students List", "Index", "StudentTables", null, new { @class = "collapse-item" })
 
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Promotion:</h6>
@@ -91,7 +92,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Fee's:</h6>
                         @Html.ActionLink("Tuition Fee", "Index", "SubmissionFeeTables", null, new { @class = "collapse-item" })
-                        @Html.ActionLink("Annual Fee", "Index", "StudentPromotTables", null, new { @class = "collapse-item" })
+                        @Html.ActionLink("Annual Fee", "Index", "AnnualTables", null, new { @class = "collapse-item" })
 
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Student Attendance:</h6>
@@ -296,7 +297,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <ul class="sub">
                             <li>@Html.ActionLink("Education", "Education", "Resume", null, new { @class = "" })</li>
-                            <li>@Html.ActionLink("Experience", "workExperience", "Resume", null, new { @class = "" })</li>
+                            <li>@Html.ActionLink("Experience", "WorkExperience", "Resume", null, new { @class = "" })</li>
                             <li>@Html.ActionLink("Skills", "SkiCerfLang", "Resume", null, new { @class = "" })</li>
                         </ul>
                     </div>

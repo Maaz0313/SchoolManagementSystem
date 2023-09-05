@@ -21,7 +21,7 @@ namespace SchoolManagementSystem.Controllers
             {
                 return RedirectToAction("Login", "Home");
             }
-            var studentPromotTables = db.StudentPromotTables.Include(s => s.ClassTable).Include(s => s.ProgrameSessionTable).Include(s => s.StudentTable);
+            var studentPromotTables = db.StudentPromotTables.Include(s => s.ClassTable).Include(s => s.ProgrameSessionTable).Include(s => s.SectionTable).Include(s => s.StudentTable);
             return View(studentPromotTables.ToList());
         }
 
@@ -53,6 +53,7 @@ namespace SchoolManagementSystem.Controllers
             }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name");
             ViewBag.ProgrameSessionID = new SelectList(db.ProgrameSessionTables, "ProgrameSessionID", "Details");
+            ViewBag.SectionID = new SelectList(db.SectionTables, "SectionID", "SectionName");
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name");
             return View();
         }
@@ -62,7 +63,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StudentPromotID,StudentID,ClassID,ProgrameSessionID,PromoteDate,IsActive,IsSubmit")] StudentPromotTable studentPromotTable)
+        public ActionResult Create([Bind(Include = "StudentPromotID,StudentID,ClassID,ProgrameSessionID,PromoteDate,AnnualFee,IsActive,IsSubmit,SectionID")] StudentPromotTable studentPromotTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -77,6 +78,7 @@ namespace SchoolManagementSystem.Controllers
 
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentPromotTable.ClassID);
             ViewBag.ProgrameSessionID = new SelectList(db.ProgrameSessionTables, "ProgrameSessionID", "Details", studentPromotTable.ProgrameSessionID);
+            ViewBag.SectionID = new SelectList(db.SectionTables, "SectionID", "SectionName", studentPromotTable.SectionID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", studentPromotTable.StudentID);
             return View(studentPromotTable);
         }
@@ -99,6 +101,7 @@ namespace SchoolManagementSystem.Controllers
             }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentPromotTable.ClassID);
             ViewBag.ProgrameSessionID = new SelectList(db.ProgrameSessionTables, "ProgrameSessionID", "Details", studentPromotTable.ProgrameSessionID);
+            ViewBag.SectionID = new SelectList(db.SectionTables, "SectionID", "SectionName", studentPromotTable.SectionID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", studentPromotTable.StudentID);
             return View(studentPromotTable);
         }
@@ -108,7 +111,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentPromotID,StudentID,ClassID,ProgrameSessionID,PromoteDate,IsActive,IsSubmit")] StudentPromotTable studentPromotTable)
+        public ActionResult Edit([Bind(Include = "StudentPromotID,StudentID,ClassID,ProgrameSessionID,PromoteDate,AnnualFee,IsActive,IsSubmit,SectionID")] StudentPromotTable studentPromotTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -122,6 +125,7 @@ namespace SchoolManagementSystem.Controllers
             }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentPromotTable.ClassID);
             ViewBag.ProgrameSessionID = new SelectList(db.ProgrameSessionTables, "ProgrameSessionID", "Details", studentPromotTable.ProgrameSessionID);
+            ViewBag.SectionID = new SelectList(db.SectionTables, "SectionID", "SectionName", studentPromotTable.SectionID);
             ViewBag.StudentID = new SelectList(db.StudentTables, "StudentID", "Name", studentPromotTable.StudentID);
             return View(studentPromotTable);
         }

@@ -28,55 +28,33 @@ namespace DatabaseAccess
         }
     
         public int StudentID { get; set; }
-        [Required(ErrorMessage ="Please Select Session")]
         public int SessionID { get; set; }
-        [Required(ErrorMessage = "Please Select Programe")]
         public int ProgrameID { get; set; }
-        [Required(ErrorMessage = "Please Select Current Class")]
         public int ClassID { get; set; }
         public int UserID { get; set; }
-        [Required(ErrorMessage = "Please Enter Student Name")]
         public string Name { get; set; }
-        [Required(ErrorMessage = "Please Enter Father Name")]
         public string FatherName { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime DateofBirth { get; set; }
-        [Required(ErrorMessage = "Please Enter Gender")]
         public string Gender { get; set; }
-        [Required(ErrorMessage = "Please Enter Contact No")]
         public string ContactNo { get; set; }
-        [Required(ErrorMessage = "Please Enter Student CNIC")]
         public string CNIC { get; set; }
-        [Required(ErrorMessage = "Please Enter Father CNIC")]
         public string FNIC { get; set; }
         public string Photo { get; set; }
         [DataType(DataType.Date)]
-        [Required(ErrorMessage = "Please Select Addmission Date")]
         public System.DateTime AddmissionDate { get; set; }
-        [Required(ErrorMessage = "Please Enter Previous School Name")]
         public string PreviousSchool { get; set; }
-        [Required(ErrorMessage = "Please Enter Previous Percentage")]
         public Nullable<double> PreviousPercentage { get; set; }
-        [DataType(DataType.EmailAddress)]
-        [Required(ErrorMessage = "Please Enter Email Address")]
         public string EmailAddress { get; set; }
-        [Required(ErrorMessage = "Please Enter Permanent Address")]
         public string Address { get; set; }
-        [Required(ErrorMessage = "Please Enter Nationality")]
         public string Nationality { get; set; }
-        [Required(ErrorMessage = "Please Enter Religion")]
         public string Religion { get; set; }
-        [Required(ErrorMessage = "Please Enter Caste")]
         public string TribeorCaste { get; set; }
-        [Required(ErrorMessage = "Please Enter Father Occupational")]
         public string FatherGuardiansOccupation { get; set; }
-        [Required(ErrorMessage = "Please Enter Postal Address")]
         public string FatherGuardiansPostalAddress { get; set; }
-        [Required(ErrorMessage = "Please Enter Office Phone No.")]
         public string PhoneOffice { get; set; }
-        [Required(ErrorMessage = "Please Enter Home Phone No.")]
         public string PhoneResident { get; set; }
-        [NotMapped][Required(ErrorMessage ="Please Select Student Photo")]
+        [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

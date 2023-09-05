@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1eaee272a5484dca8d9ae88c24df6325" Name="Diagram1">
+      <Diagram DiagramId="1eaee272a5484dca8d9ae88c24df6325" Name="Diagram1" ZoomLevel="82">
         <EntityTypeShape EntityType="SchoolMgtDbModel.AnnualTable" Width="1.5" PointX="7.5" PointY="51.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.AttendanceTable" Width="1.5" PointX="12.75" PointY="57.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.ClassSubjectTable" Width="1.5" PointX="7.5" PointY="76" IsExpanded="true" />
@@ -29,7 +29,6 @@
         <EntityTypeShape EntityType="SchoolMgtDbModel.SessionTable" Width="1.5" PointX="5.25" PointY="72.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.StaffAttendanceTable" Width="1.5" PointX="9.75" PointY="45.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.StaffTable" Width="1.5" PointX="7.5" PointY="34.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentPromotTable" Width="1.5" PointX="12.75" PointY="61.875" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.SubjectTable" Width="1.5" PointX="5.25" PointY="76.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.SubmissionFeeTable" Width="1.5" PointX="15.75" PointY="52.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolMgtDbModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
@@ -45,7 +44,6 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_ExamMarksTable_ClassSubjectTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_TimeTblTable_ClassSubjectTable1" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SchoolLeavingTable_ClassTable" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_ClassTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_DesignationTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StaffTable_DesignationTable" ManuallyRouted="false" />
@@ -70,12 +68,10 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_ProgrameSessionTable_ProgrameTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ProgrameSessionTable_SessionTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ProgrameSessionTable_UserTable" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_ProgrameTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_ProgrameTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SchoolLeavingTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SectionTable_UserTable" ManuallyRouted="false" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SessionTable_UserTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StaffAttendanceTable_StaffTable" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StaffTable_UserTable" ManuallyRouted="false" />
@@ -91,9 +87,13 @@
         <AssociationConnector Association="SchoolMgtDbModel.FK_StudentTable_ProgrameTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SchoolLeavingTable_StudentTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StudentTable_SessionTable" />
-        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_StudentTable_UserTable" />
         <AssociationConnector Association="SchoolMgtDbModel.FK_SubmissionFeeTable_StudentTable" />
+        <EntityTypeShape EntityType="SchoolMgtDbModel.StudentPromotTable" Width="1.5" PointX="13.125" PointY="61.125" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable" />
+        <AssociationConnector Association="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -48,7 +48,7 @@ namespace DatabaseAccess
         public string CriminalRecordDetails { get; set; }
         [DataType(DataType.Date)]
         public System.DateTime RegistrationDate { get; set; }
-        [NotMapped][Required]
+        [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
     
         public virtual DesignationTable DesignationTable { get; set; }

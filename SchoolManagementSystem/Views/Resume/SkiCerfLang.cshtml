@@ -35,35 +35,40 @@
 </div>
 @section Scripts {
     <script type="text/javascript">
-    $(document).ready(function () {
-        //Add New Skills
-        $('#AddSkill').on('click', function () {
-            var skill = {
-                SkillName: $('#SkillName').val()
-            };
-            AddNewEntity("@Url.Action("AddSkill", "Resume")", "POST", skill);
-        });
-        //Add New Language
-        $('#AddLanguage').on('click', function () {
-            var language = {
-                LanguageName: $('#LanguageName').val(), Proficiency: $('#Proficiency').val()
-            };
-            AddNewEntity("@Url.Action("Add Language", "Resume")", 'POST', language);
-        });
-        function AddNewEntity(action, type, model) {
-            $.ajax({
-                url: action,
-                type: type,
-                data: model,
-                success: function (response) {
-                    alert(response.data);
-                },
-                error: function (error) {
-                    alert(error.data);
-                }
+        $(document).ready(function () {
+            // Add New Skills
+            $('#AddSkill').on('click', function () {
+                var skill = {
+                    SkillName: $('#SkillName').val()
+                };
+                AddNewEntity("/Resume/AddSkill", "POST", skill);
             });
-        }
-    });
+
+            // Add New Language
+            $('#AddLanguage').on('click', function () {
+                var language = {
+                    LanguageName: $('#LanguageName').val(),
+                    Proficiency: $('#Proficiency').val()
+                };
+                AddNewEntity("/Resume/Add%20Language", 'POST', language);
+            });
+
+            function AddNewEntity(action, type, model) {
+                $.ajax({
+                    url: action,
+                    type: type,
+                    contentType: "application/json", // Set the content type to JSON
+                    data: JSON.stringify(model),    // Serialize the data to JSON
+                    success: function (response) {
+                        alert(response.data);
+                    },
+                    error: function (error) {
+                        alert(error.responseText); // Access the error message using error.responseText
+                    }
+                });
+            }
+        });
     </script>
+
     @Scripts.Render("~/bundles/jqueryval")
 }
