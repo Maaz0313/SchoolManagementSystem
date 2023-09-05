@@ -11,7 +11,10 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StudentTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -37,6 +40,7 @@ namespace DatabaseAccess
         public string CNIC { get; set; }
         public string FNIC { get; set; }
         public string Photo { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime AddmissionDate { get; set; }
         public string PreviousSchool { get; set; }
         public Nullable<double> PreviousPercentage { get; set; }
@@ -49,7 +53,9 @@ namespace DatabaseAccess
         public string FatherGuardiansPostalAddress { get; set; }
         public string PhoneOffice { get; set; }
         public string PhoneResident { get; set; }
-    
+        [NotMapped][Required]
+        public HttpPostedFileBase PhotoFile { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AttendanceTable> AttendanceTables { get; set; }
         public virtual ClassTable ClassTable { get; set; }

@@ -11,7 +11,10 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
+
     public partial class StaffTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -43,7 +46,10 @@ namespace DatabaseAccess
         public string MedicationDetails { get; set; }
         public Nullable<bool> CriminalRecordIfAny { get; set; }
         public string CriminalRecordDetails { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime RegistrationDate { get; set; }
+        [NotMapped][Required]
+        public HttpPostedFileBase PhotoFile { get; set; }
     
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
