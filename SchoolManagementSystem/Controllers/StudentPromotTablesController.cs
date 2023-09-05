@@ -25,6 +25,28 @@ namespace SchoolManagementSystem.Controllers
             return View(studentPromotTables.ToList());
         }
 
+        public ActionResult GetPromotClsList(string sid)
+        {
+            int studentid = Convert.ToInt32(sid);
+            var student
+            = db.StudentTables.Find(studentid);
+            List<ClassTable> classTable = new List<ClassTable>();
+            foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+            {
+                classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+            }
+            return Json(new { data = classTable }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetAnnulFee(string sid)
+        {
+            int progsessid = Convert.ToInt32(sid);
+            var ps = db.ProgrameSessionTables.Find(progsessid);
+            var annulfee = db.AnnualTables.Where(a => a.AnnualID == ps.ProgrameID).SingleOrDefault();
+            double? fee = annulfee.Fees;
+            return Json(new { fees = fee }, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: StudentPromotTables/Details/5
         public ActionResult Details(int? id)
         {
