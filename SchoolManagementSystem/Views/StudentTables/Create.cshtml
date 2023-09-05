@@ -125,9 +125,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Photo, "Select Photo", htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                        @Html.LabelFor(model => model.PhotoFile, "Select Photo (.png only)", htmlAttributes: new { @class = "control-label" })
+                        <span class="btn btn-default btn-file"> @Html.TextBoxFor(model => model.PhotoFile, new { type = "file" }) </span>
+                        @Html.ValidationMessageFor(model => model.PhotoFile, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
