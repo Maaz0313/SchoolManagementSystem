@@ -76,7 +76,7 @@ namespace DatabaseAccess
         public string PhoneOffice { get; set; }
         [Required(ErrorMessage = "Please Enter Home Phone No.")]
         public string PhoneResident { get; set; }
-        [NotMapped]
+        [NotMapped][Required(ErrorMessage ="Please Select Student Photo")]
         public HttpPostedFileBase PhotoFile { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
