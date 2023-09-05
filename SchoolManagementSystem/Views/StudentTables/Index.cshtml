@@ -72,6 +72,9 @@
             @Html.DisplayNameFor(model => model.PhoneResident)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ClassTable.Name)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ProgrameTable.Name)
         </th>
         <th>
@@ -144,6 +147,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhoneResident)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClassTable.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ProgrameTable.Name)
