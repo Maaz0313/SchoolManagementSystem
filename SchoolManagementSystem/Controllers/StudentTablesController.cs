@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -75,24 +76,41 @@ namespace SchoolManagementSystem.Controllers
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             studentTable.UserID = userid;
-            if (ModelState.IsValid)
+            
+            try
             {
-                db.StudentTables.Add(studentTable);
-                db.SaveChanges();
-                if (studentTable.PhotoFile != null)
+               if (ModelState.IsValid)
                 {
-                    var folder = "/Content/StudentPhotos";
-                    var file = string.Format("{0}.png", studentTable.StudentID);
-                    var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
-                    if (response)
+                    db.StudentTables.Add(studentTable);
+                    db.SaveChanges();
+                    if (studentTable.PhotoFile != null)
                     {
-                        var pic = string.Format("{0}/{1}", folder, file);
-                        studentTable.Photo = pic;
-                        db.Entry(studentTable).State = EntityState.Modified;
-                        db.SaveChanges();
+                        var folder = "/Content/StudentPhotos";
+                        var file = string.Format("{0}.png", studentTable.StudentID);
+                        var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
+                        if (response)
+                        {
+                            var pic = string.Format("{0}/{1}", folder, file);
+                            studentTable.Photo = pic;
+                            db.Entry(studentTable).State = EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                    }
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (DbEntityValidationException e)
+            {
+                foreach (var eve in e.EntityValidationErrors)
+                {
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        // Add validation errors to the ModelState
+                        ModelState.AddModelError(ve.PropertyName, ve.ErrorMessage);
                     }
                 }
-                return RedirectToAction("Index");
+                // Handle the error or return to the view with validation errors
+                return View();
             }
 
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
