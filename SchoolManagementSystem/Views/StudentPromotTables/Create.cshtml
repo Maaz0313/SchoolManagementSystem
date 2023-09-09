@@ -93,35 +93,42 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#StudentID').change(function () {
-            $('#ClassID').html('');
-            $.ajax({
-                    url: '@Url.Action("GetPromotC1sList", "StudentPromotTables")',
-                    type: 'GET',
-                    data: { sid, $(this).val() },
-                    dataType: 'json',
-                    success: function (response) {
-                        for (var i = 0; i < response.data.length; i++)
-                        {
-                            $('#ClassID').append("<option value=" + response.data[i].ClassID + ">" + response.data[i].Name + "</option>");
-                        }
-                    },
-                    error: function () {
-                    }
-            });
-        });
-        $('#ProgrameSessionID').change(function () {
-            $.ajax({
-                url: '@Url.Action("GetAnnulFee", "StudentPromotTables")',
-                type: 'GET',
-                dataType: 'json',
-                data: { sid: $(this).val() },
-                success: function (response) {
-                    $('#AnnualFee').val(response.fees);
-                },
-                error: function () {
+    $('#StudentID').change(function () {
+        $('#ClassID').html('');
+        var sid = ''; // Define or assign the appropriate value to sid
+        $.ajax({
+            url: '@Url.Action("GetPromotC1sList", "StudentPromotTables")',
+            type: 'GET',
+            data: { sid: sid, selectedValue: $(this).val() }, // Properly pass variables
+            dataType: 'json',
+            success: function (response) {
+                for (var i = 0; i < response.data.length; i++) {
+                    // Use proper quoting for attribute values to avoid HTML injection
+                    $('#ClassID').append("<option value='" + response.data[i].ClassID + "'>" + response.data[i].Name + "</option>");
                 }
-            });
+            },
+            error: function () {
+                // Handle errors here, e.g., show an error message to the user
+                console.log('An error occurred during the AJAX request.');
+            }
         });
     });
+
+    $('#ProgrameSessionID').change(function () {
+        $.ajax({
+            url: '@Url.Action("GetAnnulFee", "StudentPromotTables")',
+            type: 'GET',
+            dataType: 'json',
+            data: { sid: $(this).val() },
+            success: function (response) {
+                $('#AnnualFee').val(response.fees);
+            },
+            error: function () {
+                // Handle errors here, e.g., show an error message to the user
+                console.log('An error occurred during the AJAX request.');
+            }
+        });
+    });
+});
+
 </script>

@@ -56,7 +56,7 @@ namespace DatabaseAccess
         public virtual DbSet<UserTable> UserTables { get; set; }
         public virtual DbSet<UserTypeTable> UserTypeTables { get; set; }
         public virtual DbSet<vAllUser> vAllUsers { get; set; }
-        public virtual DbSet<StudentTable> StudentTables { get; set; }
         public virtual DbSet<StudentPromotTable> StudentPromotTables { get; set; }
+        public virtual DbSet<StudentTable> StudentTables { get; set; }
     }
 }

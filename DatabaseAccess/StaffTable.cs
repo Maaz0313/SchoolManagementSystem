@@ -50,7 +50,8 @@ namespace DatabaseAccess
         public System.DateTime RegistrationDate { get; set; }
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
-    
+
+
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }

@@ -1426,8 +1426,8 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
           <NavigationProperty Name="ClassSubjectTables" Relationship="Self.FK_ClassSubjectTable_ClassTable" FromRole="ClassTable" ToRole="ClassSubjectTable" />
           <NavigationProperty Name="SchoolLeavingTables" Relationship="Self.FK_SchoolLeavingTable_ClassTable" FromRole="ClassTable" ToRole="SchoolLeavingTable" />
           <NavigationProperty Name="SubmissionFeeTables" Relationship="Self.FK_SubmissionFeeTable_ClassTable" FromRole="ClassTable" ToRole="SubmissionFeeTable" />
-          <NavigationProperty Name="StudentTables" Relationship="SchoolMgtDbModel.FK_StudentTable_ClassTable" FromRole="ClassTable" ToRole="StudentTable" />
           <NavigationProperty Name="StudentPromotTables" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable" FromRole="ClassTable" ToRole="StudentPromotTable" />
+          <NavigationProperty Name="StudentTables" Relationship="SchoolMgtDbModel.FK_StudentTable_ClassTable" FromRole="ClassTable" ToRole="StudentTable" />
         </EntityType>
         <EntityType Name="ContactTable">
           <Key>
@@ -2586,10 +2586,15 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             <End Role="UserTypeTable" EntitySet="UserTypeTables" />
             <End Role="UserTable" EntitySet="UserTables" />
           </AssociationSet>
+          <EntitySet Name="StudentPromotTables" EntityType="SchoolMgtDbModel.StudentPromotTable" />
           <EntitySet Name="StudentTables" EntityType="SchoolMgtDbModel.StudentTable" />
           <AssociationSet Name="FK_AttendanceTable_StudentTable" Association="SchoolMgtDbModel.FK_AttendanceTable_StudentTable">
             <End Role="StudentTable" EntitySet="StudentTables" />
             <End Role="AttendanceTable" EntitySet="AttendanceTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPromotTable_ClassTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable">
+            <End Role="ClassTable" EntitySet="ClassTables" />
+            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentTable_ClassTable" Association="SchoolMgtDbModel.FK_StudentTable_ClassTable">
             <End Role="ClassTable" EntitySet="ClassTables" />
@@ -2599,6 +2604,10 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             <End Role="StudentTable" EntitySet="StudentTables" />
             <End Role="ExamMarksTable" EntitySet="ExamMarksTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_StudentPromotTable_ProgrameSessionTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable">
+            <End Role="ProgrameSessionTable" EntitySet="ProgrameSessionTables" />
+            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_StudentTable_ProgrameTable" Association="SchoolMgtDbModel.FK_StudentTable_ProgrameTable">
             <End Role="ProgrameTable" EntitySet="ProgrameTables" />
             <End Role="StudentTable" EntitySet="StudentTables" />
@@ -2607,9 +2616,17 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             <End Role="StudentTable" EntitySet="StudentTables" />
             <End Role="SchoolLeavingTable" EntitySet="SchoolLeavingTables" />
           </AssociationSet>
+          <AssociationSet Name="FK_StudentPromotTable_SectionTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable">
+            <End Role="SectionTable" EntitySet="SectionTables" />
+            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
+          </AssociationSet>
           <AssociationSet Name="FK_StudentTable_SessionTable" Association="SchoolMgtDbModel.FK_StudentTable_SessionTable">
             <End Role="SessionTable" EntitySet="SessionTables" />
             <End Role="StudentTable" EntitySet="StudentTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StudentPromotTable_StudentTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable">
+            <End Role="StudentTable" EntitySet="StudentTables" />
+            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
           </AssociationSet>
           <AssociationSet Name="FK_StudentTable_UserTable" Association="SchoolMgtDbModel.FK_StudentTable_UserTable">
             <End Role="UserTable" EntitySet="UserTables" />
@@ -2619,24 +2636,25 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             <End Role="StudentTable" EntitySet="StudentTables" />
             <End Role="SubmissionFeeTable" EntitySet="SubmissionFeeTables" />
           </AssociationSet>
-          <EntitySet Name="StudentPromotTables" EntityType="SchoolMgtDbModel.StudentPromotTable" />
-          <AssociationSet Name="FK_StudentPromotTable_ClassTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable">
-            <End Role="ClassTable" EntitySet="ClassTables" />
-            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentPromotTable_ProgrameSessionTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable">
-            <End Role="ProgrameSessionTable" EntitySet="ProgrameSessionTables" />
-            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentPromotTable_SectionTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable">
-            <End Role="SectionTable" EntitySet="SectionTables" />
-            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK_StudentPromotTable_StudentTable" Association="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable">
-            <End Role="StudentTable" EntitySet="StudentTables" />
-            <End Role="StudentPromotTable" EntitySet="StudentPromotTables" />
-          </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
+        <EntityType Name="StudentPromotTable">
+          <Key>
+            <PropertyRef Name="StudentPromotID" />
+          </Key>
+          <Property Name="StudentPromotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="ClassID" Type="Int32" Nullable="false" />
+          <Property Name="ProgrameSessionID" Type="Int32" Nullable="false" />
+          <Property Name="PromoteDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AnnualFee" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsSubmit" Type="Boolean" />
+          <Property Name="SectionID" Type="Int32" />
+          <NavigationProperty Name="ClassTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable" FromRole="StudentPromotTable" ToRole="ClassTable" />
+          <NavigationProperty Name="ProgrameSessionTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable" FromRole="StudentPromotTable" ToRole="ProgrameSessionTable" />
+          <NavigationProperty Name="SectionTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable" FromRole="StudentPromotTable" ToRole="SectionTable" />
+          <NavigationProperty Name="StudentTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" FromRole="StudentPromotTable" ToRole="StudentTable" />
+        </EntityType>
         <EntityType Name="StudentTable">
           <Key>
             <PropertyRef Name="StudentID" />
@@ -2672,9 +2690,9 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
           <NavigationProperty Name="ProgrameTable" Relationship="SchoolMgtDbModel.FK_StudentTable_ProgrameTable" FromRole="StudentTable" ToRole="ProgrameTable" />
           <NavigationProperty Name="SchoolLeavingTables" Relationship="SchoolMgtDbModel.FK_SchoolLeavingTable_StudentTable" FromRole="StudentTable" ToRole="SchoolLeavingTable" />
           <NavigationProperty Name="SessionTable" Relationship="SchoolMgtDbModel.FK_StudentTable_SessionTable" FromRole="StudentTable" ToRole="SessionTable" />
+          <NavigationProperty Name="StudentPromotTables" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" FromRole="StudentTable" ToRole="StudentPromotTable" />
           <NavigationProperty Name="UserTable" Relationship="SchoolMgtDbModel.FK_StudentTable_UserTable" FromRole="StudentTable" ToRole="UserTable" />
           <NavigationProperty Name="SubmissionFeeTables" Relationship="SchoolMgtDbModel.FK_SubmissionFeeTable_StudentTable" FromRole="StudentTable" ToRole="SubmissionFeeTable" />
-          <NavigationProperty Name="StudentPromotTables" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" FromRole="StudentTable" ToRole="StudentPromotTable" />
         </EntityType>
         <Association Name="FK_AttendanceTable_StudentTable">
           <End Type="SchoolMgtDbModel.StudentTable" Role="StudentTable" Multiplicity="1" />
@@ -2685,6 +2703,18 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             </Principal>
             <Dependent Role="AttendanceTable">
               <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPromotTable_ClassTable">
+          <End Type="SchoolMgtDbModel.ClassTable" Role="ClassTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ClassTable">
+              <PropertyRef Name="ClassID" />
+            </Principal>
+            <Dependent Role="StudentPromotTable">
+              <PropertyRef Name="ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2712,6 +2742,18 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentPromotTable_ProgrameSessionTable">
+          <End Type="SchoolMgtDbModel.ProgrameSessionTable" Role="ProgrameSessionTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProgrameSessionTable">
+              <PropertyRef Name="ProgrameSessionID" />
+            </Principal>
+            <Dependent Role="StudentPromotTable">
+              <PropertyRef Name="ProgrameSessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentTable_ProgrameTable">
           <End Type="SchoolMgtDbModel.ProgrameTable" Role="ProgrameTable" Multiplicity="1" />
           <End Type="SchoolMgtDbModel.StudentTable" Role="StudentTable" Multiplicity="*" />
@@ -2736,6 +2778,18 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_StudentPromotTable_SectionTable">
+          <End Type="SchoolMgtDbModel.SectionTable" Role="SectionTable" Multiplicity="0..1" />
+          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SectionTable">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="StudentPromotTable">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_StudentTable_SessionTable">
           <End Type="SchoolMgtDbModel.SessionTable" Role="SessionTable" Multiplicity="1" />
           <End Type="SchoolMgtDbModel.StudentTable" Role="StudentTable" Multiplicity="*" />
@@ -2745,6 +2799,18 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             </Principal>
             <Dependent Role="StudentTable">
               <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StudentPromotTable_StudentTable">
+          <End Type="SchoolMgtDbModel.StudentTable" Role="StudentTable" Multiplicity="1" />
+          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StudentTable">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="StudentPromotTable">
+              <PropertyRef Name="StudentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2772,73 +2838,7 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="StudentPromotTable">
-          <Key>
-            <PropertyRef Name="StudentPromotID" />
-          </Key>
-          <Property Name="StudentPromotID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StudentID" Type="Int32" Nullable="false" />
-          <Property Name="ClassID" Type="Int32" Nullable="false" />
-          <Property Name="ProgrameSessionID" Type="Int32" Nullable="false" />
-          <Property Name="PromoteDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="AnnualFee" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="IsSubmit" Type="Boolean" />
-          <Property Name="SectionID" Type="Int32" />
-          <NavigationProperty Name="ClassTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_ClassTable" FromRole="StudentPromotTable" ToRole="ClassTable" />
-          <NavigationProperty Name="ProgrameSessionTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_ProgrameSessionTable" FromRole="StudentPromotTable" ToRole="ProgrameSessionTable" />
-          <NavigationProperty Name="SectionTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_SectionTable" FromRole="StudentPromotTable" ToRole="SectionTable" />
-          <NavigationProperty Name="StudentTable" Relationship="SchoolMgtDbModel.FK_StudentPromotTable_StudentTable" FromRole="StudentPromotTable" ToRole="StudentTable" />
-        </EntityType>
-        <Association Name="FK_StudentPromotTable_ClassTable">
-          <End Type="SchoolMgtDbModel.ClassTable" Role="ClassTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ClassTable">
-              <PropertyRef Name="ClassID" />
-            </Principal>
-            <Dependent Role="StudentPromotTable">
-              <PropertyRef Name="ClassID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentPromotTable_ProgrameSessionTable">
-          <End Type="SchoolMgtDbModel.ProgrameSessionTable" Role="ProgrameSessionTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProgrameSessionTable">
-              <PropertyRef Name="ProgrameSessionID" />
-            </Principal>
-            <Dependent Role="StudentPromotTable">
-              <PropertyRef Name="ProgrameSessionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentPromotTable_SectionTable">
-          <End Type="SchoolMgtDbModel.SectionTable" Role="SectionTable" Multiplicity="0..1" />
-          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SectionTable">
-              <PropertyRef Name="SectionID" />
-            </Principal>
-            <Dependent Role="StudentPromotTable">
-              <PropertyRef Name="SectionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_StudentPromotTable_StudentTable">
-          <End Type="SchoolMgtDbModel.StudentTable" Role="StudentTable" Multiplicity="1" />
-          <End Type="SchoolMgtDbModel.StudentPromotTable" Role="StudentPromotTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StudentTable">
-              <PropertyRef Name="StudentID" />
-            </Principal>
-            <Dependent Role="StudentPromotTable">
-              <PropertyRef Name="StudentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -3247,6 +3247,21 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="StudentPromotTables">
+            <EntityTypeMapping TypeName="SchoolMgtDbModel.StudentPromotTable">
+              <MappingFragment StoreEntitySet="StudentPromotTable">
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="IsSubmit" ColumnName="IsSubmit" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="AnnualFee" ColumnName="AnnualFee" />
+                <ScalarProperty Name="PromoteDate" ColumnName="PromoteDate" />
+                <ScalarProperty Name="ProgrameSessionID" ColumnName="ProgrameSessionID" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="StudentPromotID" ColumnName="StudentPromotID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="StudentTables">
             <EntityTypeMapping TypeName="SchoolMgtDbModel.StudentTable">
               <MappingFragment StoreEntitySet="StudentTable">
@@ -3278,22 +3293,7 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="StudentPromotTables">
-            <EntityTypeMapping TypeName="SchoolMgtDbModel.StudentPromotTable">
-              <MappingFragment StoreEntitySet="StudentPromotTable">
-                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
-                <ScalarProperty Name="IsSubmit" ColumnName="IsSubmit" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="AnnualFee" ColumnName="AnnualFee" />
-                <ScalarProperty Name="PromoteDate" ColumnName="PromoteDate" />
-                <ScalarProperty Name="ProgrameSessionID" ColumnName="ProgrameSessionID" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-                <ScalarProperty Name="StudentPromotID" ColumnName="StudentPromotID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -20,9 +20,5 @@ namespace DatabaseAccess
         public string Subject { get; set; }
         public string Message { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
-        public ContactTable()
-        {
-            CreatedOn = System.DateTime.Now;
-        }
     }
 }
