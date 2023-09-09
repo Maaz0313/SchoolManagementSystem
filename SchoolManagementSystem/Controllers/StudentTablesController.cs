@@ -112,7 +112,7 @@ namespace SchoolManagementSystem.Controllers
                 // Handle the error or return to the view with validation errors
                 return View();
             }
-
+            ViewBag.SessionID = new SelectList(db.SessionTables, "SessionID", "Name");
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
             ViewBag.ProgrameID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.ProgrameID);
             ViewBag.SessionID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.SessionID);
