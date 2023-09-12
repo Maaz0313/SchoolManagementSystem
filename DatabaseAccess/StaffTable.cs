@@ -10,10 +10,9 @@
 namespace DatabaseAccess
 {
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public partial class StaffTable
     {
@@ -46,12 +45,9 @@ namespace DatabaseAccess
         public string MedicationDetails { get; set; }
         public Nullable<bool> CriminalRecordIfAny { get; set; }
         public string CriminalRecordDetails { get; set; }
-        [DataType(DataType.Date)]
         public System.DateTime RegistrationDate { get; set; }
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
-
-
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }

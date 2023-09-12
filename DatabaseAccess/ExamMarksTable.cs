@@ -24,7 +24,7 @@ namespace DatabaseAccess
     
         public virtual ClassSubjectTable ClassSubjectTable { get; set; }
         public virtual ExamTable ExamTable { get; set; }
-        public virtual UserTable UserTable { get; set; }
         public virtual StudentTable StudentTable { get; set; }
+        public virtual UserTable UserTable { get; set; }
     }
 }
