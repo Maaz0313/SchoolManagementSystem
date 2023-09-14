@@ -10,9 +10,9 @@
 namespace DatabaseAccess
 {
     using System;
-    using System.Web;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System.Web;
 
     public partial class StaffTable
     {
@@ -48,6 +48,7 @@ namespace DatabaseAccess
         public System.DateTime RegistrationDate { get; set; }
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }
+
         public virtual DesignationTable DesignationTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeeLeavingTable> EmployeeLeavingTables { get; set; }

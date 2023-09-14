@@ -325,7 +325,7 @@
           <Property Name="ContactNo" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="CNIC" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="FNIC" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Photo" Type="varchar(max)" Nullable="false" />
+          <Property Name="Photo" Type="varchar(max)" />
           <Property Name="AddmissionDate" Type="date" Nullable="false" />
           <Property Name="PreviousSchool" Type="varchar" MaxLength="500" />
           <Property Name="PreviousPercentage" Type="float" />
@@ -1765,7 +1765,7 @@ warning 6002: The table/view 'SchoolMgtDb.dbo.vAllUsers' does not have a primary
           <Property Name="ContactNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CNIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FNIC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="AddmissionDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PreviousSchool" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="PreviousPercentage" Type="Double" />
