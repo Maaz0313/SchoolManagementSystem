@@ -139,7 +139,6 @@ namespace SchoolManagementSystem.Controllers
             
                 if (ModelState.IsValid)
                 {
-                    
                     try
                     {
                         var folder = "/Content/StudentPhotos";
