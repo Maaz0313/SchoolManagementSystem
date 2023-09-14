@@ -69,14 +69,14 @@ namespace SchoolManagementSystem.Controllers
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             staffTable.UserID = userid;
-
+            staffTable.Photo = "~/Content/EmployeePhotos/default.png";
             if (ModelState.IsValid)
             {
                 db.StaffTables.Add(staffTable);
                 db.SaveChanges();
                 if (staffTable.PhotoFile != null)
                 {
-                    var folder = "/Content/EmployeePhotos";
+                    var folder = "~/Content/EmployeePhotos";
                     var file = string.Format("{0}.png", staffTable.StaffID);
                     var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
                     if (response)
@@ -131,7 +131,7 @@ namespace SchoolManagementSystem.Controllers
             staffTable.UserID = userid;
             if (ModelState.IsValid)
             {
-                var folder = "/Content/EmployeePhotos";
+                var folder = "~/Content/EmployeePhotos";
                 var file = string.Format("{0}.png", staffTable.StaffID);
                 var response = FileHelper.UploadFile.UploadPhoto(staffTable.PhotoFile, folder, file);
                 if (response)
@@ -143,22 +143,9 @@ namespace SchoolManagementSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            else
-            {
-                // Add validation error messages to ViewBag
-                ViewBag.ValidationErrors = ModelState.Values
-                    .SelectMany(v => v.Errors)
-                    .Select(e => e.ErrorMessage)
-                    .ToList();
-
-                // Return the view with validation errors
-                ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
-                ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
-                return View(staffTable);
-            }
-            //ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
-            //ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
-            //return View(staffTable);
+            ViewBag.DesignationID = new SelectList(db.DesignationTables, "DesignationID", "Title", staffTable.DesignationID);
+            ViewBag.UserID = new SelectList(db.UserTables, "UserID", "FullName", staffTable.UserID);
+            return View(staffTable);
         }
 
         // GET: StaffTables/Delete/5

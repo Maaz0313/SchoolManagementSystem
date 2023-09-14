@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -71,13 +72,14 @@ namespace SchoolManagementSystem.Controllers
             }
             int userid = Convert.ToInt32(Convert.ToString(Session["UserID"]));
             studentTable.UserID = userid;
+            studentTable.Photo = "~/Content/StudentPhotos/default.png";
             if (ModelState.IsValid)
             {
                 db.StudentTables.Add(studentTable);
                 db.SaveChanges();
                 if (studentTable.PhotoFile != null)
                 {
-                    var folder = "/Content/StudentPhotos";
+                    var folder = "~/Content/StudentPhotos";
                     var file = string.Format("{0}.png", studentTable.StudentID);
                     var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
                     if (response)
@@ -126,7 +128,7 @@ namespace SchoolManagementSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "StudentID,SessionID,ProgrameID,ClassID,UserID,Name,FatherName,DateofBirth,Gender,ContactNo,CNIC,FNIC,Photo,AddmissionDate,PreviousSchool,PreviousPercentage,EmailAddress,Address,Nationality,Religion,TribeorCaste,FatherGuardiansOccupation,FatherGuardiansPostalAddress,PhoneOffice,PhoneResident")] StudentTable studentTable)
+        public ActionResult Edit(StudentTable studentTable)
         {
             if (string.IsNullOrEmpty(Convert.ToString(Session["UserName"])))
             {
@@ -137,45 +139,36 @@ namespace SchoolManagementSystem.Controllers
             
                 if (ModelState.IsValid)
                 {
+                    
                     try
                     {
+                        var folder = "/Content/StudentPhotos";
+                        var file = string.Format("{0}.png", studentTable.StudentID);
+                        var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
+                        if (response)
+                        {
+                            var pic = string.Format("{0}/{1}", folder, file);
+                            studentTable.Photo = pic;
+                        }
                         db.Entry(studentTable).State = EntityState.Modified;
                         db.SaveChanges();
-                        if (studentTable.PhotoFile != null)
-                        {
-                            var folder = "/Content/StudentPhotos";
-                            var file = string.Format("{0}.png", studentTable.StudentID);
-                            var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
-                            if (response)
-                            {
-                                var pic = string.Format("{0}/{1}", folder, file);
-                                studentTable.Photo = pic;
-                                db.Entry(studentTable).State = EntityState.Modified;
-                                db.SaveChanges();
-                            }
-                        }
                         return RedirectToAction("Index");
                     }
-                    catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
+                    catch (DbEntityValidationException ex)
                     {
-                        Exception raise = dbEx;
-                        foreach (var validationErrors in dbEx.EntityValidationErrors)
+                        foreach (var validationErrors in ex.EntityValidationErrors)
                         {
                             foreach (var validationError in validationErrors.ValidationErrors)
                             {
-                                string message = string.Format("{0}:{1}",
-                                    validationErrors.Entry.Entity.ToString(),
-                                    validationError.ErrorMessage);
-                                // raise a new exception nesting  
-                                // the current instance as InnerException  
-                                raise = new InvalidOperationException(message, raise);
+                                // Collect validation error messages
+                                string errorMessage = $"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}";
+
+                                // Store the error message in ViewBag
+                                ViewBag.ValidationErrors = ViewBag.ValidationErrors + errorMessage + "<br />";
                             }
                         }
-                        throw raise;
                     }
-                }
-            
-            
+            }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
             ViewBag.ProgrameID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.ProgrameID);
             ViewBag.SessionID = new SelectList(db.SessionTables, "SessionID", "Name", studentTable.SessionID);
