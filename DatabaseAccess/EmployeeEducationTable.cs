@@ -11,14 +11,17 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EmployeeEducationTable
     {
         public int EmployeeEducationID { get; set; }
         public string InstituteUniversity { get; set; }
         public string TitleOfDiploma { get; set; }
         public string Degree { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> FromYear { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> ToYear { get; set; }
         public string City { get; set; }
         public string Country { get; set; }

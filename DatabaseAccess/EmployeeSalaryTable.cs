@@ -11,7 +11,8 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EmployeeSalaryTable
     {
         public int EmployeeSalaryID { get; set; }
@@ -20,6 +21,7 @@ namespace DatabaseAccess
         public double Amount { get; set; }
         public string SalaryMonth { get; set; }
         public string SalaryYear { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime SalaryDate { get; set; }
         public string Comments { get; set; }
     

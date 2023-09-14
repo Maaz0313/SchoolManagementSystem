@@ -11,7 +11,8 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ContactTable
     {
         public int Id { get; set; }
@@ -19,6 +20,11 @@ namespace DatabaseAccess
         public string Email { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> CreatedOn { get; set; }
+        public ContactTable()
+        {
+            CreatedOn = System.DateTime.Now;
+        }
     }
 }

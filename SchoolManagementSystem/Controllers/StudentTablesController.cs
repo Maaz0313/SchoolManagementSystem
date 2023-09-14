@@ -139,34 +139,17 @@ namespace SchoolManagementSystem.Controllers
             
                 if (ModelState.IsValid)
                 {
-                    try
+                    var folder = "/Content/StudentPhotos";
+                    var file = string.Format("{0}.png", studentTable.StudentID);
+                    var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
+                    if (response)
                     {
-                        var folder = "/Content/StudentPhotos";
-                        var file = string.Format("{0}.png", studentTable.StudentID);
-                        var response = FileHelper.UploadFile.UploadPhoto(studentTable.PhotoFile, folder, file);
-                        if (response)
-                        {
-                            var pic = string.Format("{0}/{1}", folder, file);
-                            studentTable.Photo = pic;
-                        }
-                        db.Entry(studentTable).State = EntityState.Modified;
-                        db.SaveChanges();
-                        return RedirectToAction("Index");
+                        var pic = string.Format("{0}/{1}", folder, file);
+                        studentTable.Photo = pic;
                     }
-                    catch (DbEntityValidationException ex)
-                    {
-                        foreach (var validationErrors in ex.EntityValidationErrors)
-                        {
-                            foreach (var validationError in validationErrors.ValidationErrors)
-                            {
-                                // Collect validation error messages
-                                string errorMessage = $"Property: {validationError.PropertyName}, Error: {validationError.ErrorMessage}";
-
-                                // Store the error message in ViewBag
-                                ViewBag.ValidationErrors = ViewBag.ValidationErrors + errorMessage + "<br />";
-                            }
-                        }
-                    }
+                    db.Entry(studentTable).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
             ViewBag.ClassID = new SelectList(db.ClassTables, "ClassID", "Name", studentTable.ClassID);
             ViewBag.ProgrameID = new SelectList(db.ProgrameTables, "ProgrameID", "Name", studentTable.ProgrameID);

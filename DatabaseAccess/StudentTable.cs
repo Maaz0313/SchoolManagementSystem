@@ -11,6 +11,7 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
 
@@ -33,12 +34,14 @@ namespace DatabaseAccess
         public int UserID { get; set; }
         public string Name { get; set; }
         public string FatherName { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime DateofBirth { get; set; }
         public string Gender { get; set; }
         public string ContactNo { get; set; }
         public string CNIC { get; set; }
         public string FNIC { get; set; }
         public string Photo { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime AddmissionDate { get; set; }
         public string PreviousSchool { get; set; }
         public Nullable<double> PreviousPercentage { get; set; }

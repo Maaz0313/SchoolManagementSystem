@@ -11,6 +11,7 @@ namespace DatabaseAccess
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Web;
 
@@ -45,6 +46,7 @@ namespace DatabaseAccess
         public string MedicationDetails { get; set; }
         public Nullable<bool> CriminalRecordIfAny { get; set; }
         public string CriminalRecordDetails { get; set; }
+        [DataType(DataType.Date)]
         public System.DateTime RegistrationDate { get; set; }
         [NotMapped]
         public HttpPostedFileBase PhotoFile { get; set; }

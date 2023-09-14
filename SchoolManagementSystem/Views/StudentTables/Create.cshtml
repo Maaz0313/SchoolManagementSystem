@@ -6,21 +6,21 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "StudentTables", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>StudentTable</h4>
         <hr />
         @if (ViewBag.ValidationErrors != null)
-         {
+        {
             <div class="alert alert-danger">
                 <strong>Validation Errors:</strong>
                 <br />
                 @Html.Raw(ViewBag.ValidationErrors)
             </div>
-         }
+        }
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.SessionID, "SessionID", htmlAttributes: new { @class = "control-label col-md-2" })
