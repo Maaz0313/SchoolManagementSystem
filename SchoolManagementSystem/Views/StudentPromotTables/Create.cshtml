@@ -97,7 +97,7 @@
         $('#ClassID').html('');
         var sid = ''; // Define or assign the appropriate value to sid
         $.ajax({
-            url: '@Url.Action("GetPromotC1sList", "StudentPromotTables")',
+            url: '@Url.Action("GetPromotClsList", "StudentPromotTables")',
             type: 'GET',
             data: { sid: sid, selectedValue: $(this).val() }, // Properly pass variables
             dataType: 'json',

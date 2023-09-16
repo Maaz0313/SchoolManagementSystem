@@ -28,8 +28,7 @@ namespace SchoolManagementSystem.Controllers
         public ActionResult GetPromotClsList(string sid)
         {
             int studentid = Convert.ToInt32(sid);
-            var student
-            = db.StudentTables.Find(studentid);
+            var student = db.StudentTables.Find(studentid);
             List<ClassTable> classTable = new List<ClassTable>();
             foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
             {
