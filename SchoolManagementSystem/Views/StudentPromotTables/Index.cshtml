@@ -19,25 +19,28 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.PromoteDate)
+                            Promote ID
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.AnnualFee)
+                            Student
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IsActive)
+                            Promote Date
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.IsSubmit)
+                            Promotion Fee
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ClassTable.Name)
+                            Promotion Status
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.ProgrameSessionTable.Details)
+                            Fee Status
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.StudentTable.Name)
+                            Promote Class
+                        </th>
+                        <th>
+                            Class Section
                         </th>
                         <th>
                             Actions
@@ -48,6 +51,12 @@
                     @foreach (var item in Model)
                      {
                         <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudentPromotID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.StudentTable.Name)
+                            </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PromoteDate)
                             </td>
@@ -64,10 +73,7 @@
                                 @Html.DisplayFor(modelItem => item.ClassTable.Name)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.ProgrameSessionTable.Details)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.StudentTable.Name)
+                                @Html.DisplayFor(modelItem => item.SectionTable.SectionName)
                             </td>
                             <td class="btn-group">
                                 @Html.ActionLink("Edit", "Edit", new { id = item.StudentPromotID }, new { @class = "btn btn-primary" })
