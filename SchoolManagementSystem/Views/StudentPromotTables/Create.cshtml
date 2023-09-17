@@ -11,11 +11,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>StudentPromotTable</h4>
+        <h4>Student Promotion</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.StudentID, "StudentID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StudentID, "Select Student", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("StudentID", null, htmlAttributes: new { @class = "form-control", @id= "StudentID" })
                 @Html.ValidationMessageFor(model => model.StudentID, "", new { @class = "text-danger" })
@@ -23,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ClassID, "ClassID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ClassID, "Select Promote Class", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ClassID", null, htmlAttributes: new { @class = "form-control", @id = "ClassID" })
                 @Html.ValidationMessageFor(model => model.ClassID, "", new { @class = "text-danger" })
@@ -31,7 +31,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ProgrameSessionID, "ProgrameSessionID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.SectionID, "Select Section", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SectionID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SectionID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProgrameSessionID, "Select Student Session", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("ProgrameSessionID", null, htmlAttributes: new { @class = "form-control", @id = "ProgrameSessionID" })
                 @Html.ValidationMessageFor(model => model.ProgrameSessionID, "", new { @class = "text-danger" })
@@ -39,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PromoteDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PromoteDate, "Promote Date", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.PromoteDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.PromoteDate, "", new { @class = "text-danger" })
@@ -47,7 +55,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.AnnualFee, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.AnnualFee, "Promotion Fee", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnnualFee, new { htmlAttributes = new { @class = "form-control", @id = "AnnualFee" } })
                 @Html.ValidationMessageFor(model => model.AnnualFee, "", new { @class = "text-danger" })
@@ -55,7 +63,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsActive, "Promotion Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsActive)
@@ -65,20 +73,12 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IsSubmit, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsSubmit, "Promotion Fee Status", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @Html.EditorFor(model => model.IsSubmit)
                     @Html.ValidationMessageFor(model => model.IsSubmit, "", new { @class = "text-danger" })
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.SectionID, "SectionID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("SectionID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SectionID, "", new { @class = "text-danger" })
             </div>
         </div>
 

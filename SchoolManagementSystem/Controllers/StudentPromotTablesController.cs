@@ -41,7 +41,7 @@ namespace SchoolManagementSystem.Controllers
         {
             int progsessid = Convert.ToInt32(sid);
             var ps = db.ProgrameSessionTables.Find(progsessid);
-            var annulfee = db.AnnualTables.Where(a => a.AnnualID == ps.ProgrameID).SingleOrDefault();
+            var annulfee = db.AnnualTables.Where(a => a.ProgrameID == ps.ProgrameID && ps.Details.Contains(a.Title)).SingleOrDefault();
             double? fee = annulfee.Fees;
             return Json(new { fees = fee }, JsonRequestBehavior.AllowGet);
         }

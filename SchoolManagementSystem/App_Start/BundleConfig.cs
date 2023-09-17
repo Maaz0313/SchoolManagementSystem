@@ -9,10 +9,7 @@ namespace SchoolManagementSystem
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-3.3.1.js",
-                        "~/Scripts/jquery-3.3.1.slim.js",
-                        //"~/Scripts/jquery-3.4.1.intellisense.js",
-                        "~/Scripts/jquery-ui-timepicker-addon.js"));
+                        "~/Scripts/jquery-3.3.1.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate.js",
@@ -24,13 +21,11 @@ namespace SchoolManagementSystem
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/bootstrap-datetimepicker.js"));
+                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/bootstrap-theme.css",
-                      "~/Content/bootstrap-datetimepicker.css"));
+                      "~/Content/bootstrap-theme.css"));
             BundleTable.EnableOptimizations = true;
         }
     }

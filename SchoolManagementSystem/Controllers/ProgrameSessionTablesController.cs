@@ -130,13 +130,13 @@ namespace SchoolManagementSystem.Controllers
             programeSessionTable.UserID = userid;
             if (ModelState.IsValid)
             {
-                var sessionname = db.SessionTables.Where(s=>s.SessionID==programeSessionTable.SessionID).SingleOrDefault();
+                var sessionname = db.SessionTables.Where(s => s.SessionID == programeSessionTable.SessionID).SingleOrDefault();
                 var programename = db.ProgrameTables.Where(s => s.ProgrameID == programeSessionTable.ProgrameID).SingleOrDefault();
-                if (sessionname!=null)
+                if (sessionname != null)
                 {
                     if (!programeSessionTable.Details.Contains(sessionname.Name))
                     {
-                        var details = "(" + sessionname.Name + "-" + (programename!=null ? programename.Name : "") + ") " + programeSessionTable.Details;
+                        var details = "(" + sessionname.Name + "-" + (programename != null ? programename.Name : "") + ") " + programeSessionTable.Details;
                         programeSessionTable.Details = details;
                     }
                 }
