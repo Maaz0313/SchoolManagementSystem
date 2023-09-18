@@ -95,25 +95,25 @@
         }
     </div>
 </div>
-        <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function () {
     $('#StudentID').change(function () {
         $('#ClassID').html('');
-        var sid = ''; // Define or assign the appropriate value to sid
+        var sid = $("#StudentID").val(); // Define or assign the appropriate value to sid
         $.ajax({
             url: '@Url.Action("GetPromotClsList", "StudentPromotTables")',
             type: 'GET',
-            data: { sid: sid, selectedValue: $(this).val() }, // Properly pass variables
+            data: { sid: $(this).val() }, // Properly pass variables
             dataType: 'json',
             success: function (response) {
                 for (var i = 0; i < response.data.length; i++) {
                     // Use proper quoting for attribute values to avoid HTML injection
-                    $('#ClassID').append("<option value='" + response.data[i].ClassID + "'>" + response.data[i].Name + "</option>");
+                    $('#ClassID').append("<option value=" + response.data[i].ClassID + ">" + response.data[i].Name + "</option>");
                 }
             },
             error: function () {
                 // Handle errors here, e.g., show an error message to the user
-                console.log('An error occurred during the AJAX request.');
+                console.log('An error occurred during the AJAX request.', arguments);
             }
         });
     });
@@ -135,4 +135,4 @@
     });
 });
 
-        </script>
+</script>

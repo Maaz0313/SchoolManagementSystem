@@ -27,14 +27,38 @@ namespace SchoolManagementSystem.Controllers
 
         public ActionResult GetPromotClsList(string sid)
         {
-            int studentid = Convert.ToInt32(sid);
-            var student = db.StudentTables.Find(studentid);
-            List<ClassTable> classTable = new List<ClassTable>();
-            foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+            try
             {
-                classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                int studentid = Convert.ToInt32(sid);
+                var student = db.StudentTables.Find(studentid);
+                //var promoteid = db.StudentPromotTables.Where(p => p.StudentID == studentid).Max(m => m.StudentPromotID);
+                List<ClassTable> classTable = new List<ClassTable>();
+                //if (promoteid > 0)
+                //{
+                //    var promotetable = db.StudentPromotTables.Find(promoteid);
+                //    foreach (var item in db.ClassTables.Where(cls => cls.ClassID > promotetable.ClassID))
+                //    {
+                //        classTable.Add(new ClassTable { ClassID = item.ClassID, Name = item.Name });
+                //    }
+                //}
+                //else
+                //{
+                foreach (var cls in db.ClassTables.Where(cls => cls.ClassID > student.ClassID))
+                {
+                    classTable.Add(new ClassTable { ClassID = cls.ClassID, Name = cls.Name });
+                }
+                //}
+
+                return Json(new { data = classTable }, JsonRequestBehavior.AllowGet);
             }
-            return Json(new { data = classTable }, JsonRequestBehavior.AllowGet);
+            catch (Exception ex)
+            {
+                // Log the exception using the Trace class
+                System.Diagnostics.Trace.TraceError("Exception: " + ex.Message);
+
+                // Return an HTTP 500 status code
+                return new HttpStatusCodeResult(HttpStatusCode.InternalServerError);
+            }
         }
 
         public ActionResult GetAnnulFee(string sid)
